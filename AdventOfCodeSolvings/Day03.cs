@@ -60,7 +60,7 @@ namespace AdventOfCodeSolvings
 
         public class LineObject
         {
-            private readonly int[,] array = new int[1000, 1000];
+            public HashSet<Tuple<int, int>> FabricTuples = new HashSet<Tuple<int, int>>();
             public LineObject(int startX, int startY, int widthX, int widthY)
             {
 
@@ -68,13 +68,10 @@ namespace AdventOfCodeSolvings
                 {
                     for (var j = startY; j < startY + widthY; j++)
                     {
-                        array[i, j] = 1;
+                        FabricTuples.Add(new Tuple<int, int>(i, j));
                     }
-
                 }
             }
-
-            public int[,] Array => array;
         }
 
         public int RunPartB(List<string> input)
@@ -105,16 +102,54 @@ namespace AdventOfCodeSolvings
 
             foreach(var item in parsedLineObjects)
             {
+                var intersectsAny = false;
+                foreach (var itemToCheck in parsedLineObjects)
+                {
+                    if (item.Key == itemToCheck.Key)
+                    {
+                        continue;
+                    }
+                    foreach (var fabricTuple in item.Value.FabricTuples)
+                    {
+                        foreach(var fabricTupleToCheck in itemToCheck.Value.FabricTuples)
+                        {
+                            
+                            if(fabricTuple.Item1 == fabricTupleToCheck.Item1 && fabricTuple.Item2 == fabricTupleToCheck.Item2)
+                            {
+                                intersectsAny = true;
+                            }
 
+                            if (intersectsAny)
+                            {
+                                break;
+                            }
+                        }
+                        if (intersectsAny)
+                        {
+                            break;
+                        }
+                    }
+                    if (intersectsAny)
+                    {
+                        break;
+                    }
+                }
+
+                if (intersectsAny == false)
+                {
+                    return item.Key;
+                }
             }
 
-            var result = parsedLineObjects.Except(coveredIds);
+            //var result = parsedLineObjects.Except(coveredIds);
 
-            if (result.ToArray().Length != 1)
-            {
-                Console.WriteLine("Too much elements containing");
-            }
-            return result.First();
+            //if (result.ToArray().Length != 1)
+            //{
+            //    Console.WriteLine("Too much elements containing");
+            //}
+            //return result.First();
+
+            return -1;
         }
     }
 }
