@@ -58,25 +58,12 @@ namespace AdventOfCodeSolvings
             return minimumTwoOverlaps;
         }
 
-        public class LineObject
-        {
-            public HashSet<Tuple<int, int>> FabricTuples = new HashSet<Tuple<int, int>>();
-            public LineObject(int startX, int startY, int widthX, int widthY)
-            {
 
-                for (var i = startX; i < startX + widthX; i++)
-                {
-                    for (var j = startY; j < startY + widthY; j++)
-                    {
-                        FabricTuples.Add(new Tuple<int, int>(i, j));
-                    }
-                }
-            }
-        }
 
         public int RunPartB(List<string> input)
         {
-            var parsedLineObjects = new Dictionary<int, LineObject>();
+            var array = new List<int>[1000, 1000];
+            var existingIds = new List<int>();
 
             /**
                 -> x
@@ -90,6 +77,7 @@ namespace AdventOfCodeSolvings
                 var split = item.Split(' ');
 
                 var id = int.Parse(split[0].Remove(0, 1));
+                existingIds.Add(id);
                 /* split[1] = @ */
                 var startSplit = split[2].Replace(":", "").Split(',');
                 int startX = int.Parse(startSplit[0]);
@@ -97,59 +85,46 @@ namespace AdventOfCodeSolvings
                 var widthSplit = split[3].Split('x');
                 int widthX = int.Parse(widthSplit[0]);
                 int widthY = int.Parse(widthSplit[1]);
-                parsedLineObjects.Add(id, new LineObject(startX, startY, widthX, widthY));
+
+                for (var i = startX; i < startX + widthX; i++)
+                {
+                    for (var j = startY; j < startY + widthY; j++)
+                    {
+                        if (array[i, j] == null)
+                        {
+                            array[i, j] = new List<int>();
+                        }
+                        array[i, j].Add(id);
+                    }
+
+                }
             }
 
-            foreach(var item in parsedLineObjects)
+            List<int> coveredIds = new List<int>();
+            for (var i = 0; i < 1000; i++)
             {
-                var intersectsAny = false;
-                foreach (var itemToCheck in parsedLineObjects)
+                for (var j = 0; j < 1000; j++)
                 {
-                    if (item.Key == itemToCheck.Key)
+                    if (array[i, j] != null && array[i, j].Count >= 2)
                     {
-                        continue;
-                    }
-                    foreach (var fabricTuple in item.Value.FabricTuples)
-                    {
-                        foreach(var fabricTupleToCheck in itemToCheck.Value.FabricTuples)
+                        foreach (var item in array[i, j])
                         {
-                            
-                            if(fabricTuple.Item1 == fabricTupleToCheck.Item1 && fabricTuple.Item2 == fabricTupleToCheck.Item2)
+                            if (!coveredIds.Contains(item))
                             {
-                                intersectsAny = true;
-                            }
-
-                            if (intersectsAny)
-                            {
-                                break;
+                                coveredIds.Add(item);
                             }
                         }
-                        if (intersectsAny)
-                        {
-                            break;
-                        }
                     }
-                    if (intersectsAny)
-                    {
-                        break;
-                    }
-                }
-
-                if (intersectsAny == false)
-                {
-                    return item.Key;
                 }
             }
 
-            //var result = parsedLineObjects.Except(coveredIds);
+            var result = existingIds.Except(coveredIds);
 
-            //if (result.ToArray().Length != 1)
-            //{
-            //    Console.WriteLine("Too much elements containing");
-            //}
-            //return result.First();
-
-            return -1;
+            if (result.ToArray().Length != 1)
+            {
+                Console.WriteLine("Too much elements containing");
+            }
+            return result.First();
         }
     }
 }
