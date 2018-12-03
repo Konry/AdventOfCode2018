@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeSolvings
 {
-    public class Day1 : DayInterface<int>
+    public class Day1 : DayInterface<int, int>
     {
         public int RunPartA(List<string> input)
         {

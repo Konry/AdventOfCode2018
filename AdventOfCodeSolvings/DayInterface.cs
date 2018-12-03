@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdventOfCodeSolvings
 {
-    public interface DayInterface<T>
+    public interface DayInterface<TA, TB>
     {
-        T RunPartA(List<string> input);
-        T RunPartB(List<string> input);
+        TA RunPartA(List<string> input);
+        TB RunPartB(List<string> input);
     }
 }
