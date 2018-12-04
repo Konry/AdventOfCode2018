@@ -11,7 +11,7 @@ namespace AdventOfCodeSolvings
     {
         public static List<string> LoadLinesFromFile(string pathToFile)
         {
-            var streamReader = new StreamReader(pathToFile);
+            var streamReader = new StreamReader(System.Reflection.Assembly.GetExecutingAssembly().Location + pathToFile);
             var readResult = new List<string>();
 
             //string line = streamReader.ReadLine();
