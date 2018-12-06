@@ -13,7 +13,7 @@ namespace Tests
         [Test]
         public void LoadLinesFromFile_Test()
         {
-            var result = FileLoader.LoadLinesFromFile("../../../../Data/test_input.txt");
+            var result = FileLoader.LoadLinesFromFile("../../../../../Data/test_input.txt");
 
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("Hello", result[0]);

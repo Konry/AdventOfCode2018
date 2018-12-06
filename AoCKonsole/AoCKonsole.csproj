@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DF51CAB-3924-4909-839D-8223D8F35E60}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AdventOfCodeSolvings</RootNamespace>
-    <AssemblyName>AdventOfCodeSolvings</AssemblyName>
+    <ProjectGuid>{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AoCKonsole</RootNamespace>
+    <AssemblyName>AoCKonsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,15 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Day06.cs" />
-    <Compile Include="Day05.cs" />
-    <Compile Include="Day04.cs" />
-    <Compile Include="Day03.cs" />
-    <Compile Include="Day02.cs" />
-    <Compile Include="Day1.cs" />
-    <Compile Include="DayInterface.cs" />
-    <Compile Include="FileLoader.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventOfCodeSolvings\AdventOfCodeSolvings.csproj">
+      <Project>{4DF51CAB-3924-4909-839D-8223D8F35E60}</Project>
+      <Name>AdventOfCodeSolvings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

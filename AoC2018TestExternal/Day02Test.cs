@@ -23,7 +23,7 @@ namespace AdventOfCodeSolvingsTest
         {
 
             var sut = new Day02();
-            var list = FileLoader.LoadLinesFromFile("../../../../Data/data_day2.txt");
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day2.txt");
             var result = sut.RunPartA(list);
 
             System.Console.WriteLine(result);
@@ -67,7 +67,7 @@ namespace AdventOfCodeSolvingsTest
         {
 
             var sut = new Day02();
-            var list = FileLoader.LoadLinesFromFile("../../../../Data/data_day2.txt");
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day2.txt");
             var result = sut.RunPartB(list);
 
             System.Console.WriteLine(result);

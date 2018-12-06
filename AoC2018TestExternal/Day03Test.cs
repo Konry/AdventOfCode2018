@@ -3,29 +3,27 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
-using System;
 
 namespace AdventOfCodeSolvingsTest
 {
-    class Day04Test
+    class Day03Test
     {
         [Test]
         public void RunPartA_TestChain()
         {
 
-            var sut = new Day04();
-            var list = FileLoader.LoadLinesFromFile("../../../../Data/data_day04_test.txt");
-            var result = sut.RunPartA(list);
+            var sut = new Day03();
+            var result = sut.RunPartA(new List<string>() { "#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2"});
 
-            Assert.AreEqual(240, result);
+            Assert.AreEqual(4, result);
         }
 
         [Test]
         public void RunPartA_FileExample()
         {
 
-            var sut = new Day04();
-            var list = FileLoader.LoadLinesFromFile("../../../../Data/data_day04.txt");
+            var sut = new Day03();
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day03.txt");
             var result = sut.RunPartA(list);
 
             System.Console.WriteLine(result);
@@ -35,10 +33,10 @@ namespace AdventOfCodeSolvingsTest
         }
 
         [Test]
-        public void RunPartB_RunPartB()
+        public void RunPartB_TestChain()
         {
 
-            var sut = new Day04();
+            var sut = new Day03();
             var result = sut.RunPartB(new List<string>() { "#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2" });
 
             Assert.AreEqual(3, result);
@@ -48,26 +46,14 @@ namespace AdventOfCodeSolvingsTest
         public void RunPartB_RunFromFile()
         {
 
-            var sut = new Day04();
-            var list = FileLoader.LoadLinesFromFile("../../../../Data/data_day03.txt");
+            var sut = new Day03();
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day03.txt");
             var result = sut.RunPartB(list);
 
             System.Console.WriteLine(result);
 
             // 919 in additional 16:00 min, but I am not pleased with the allocation of 1.000.000 Elements and therefore a list
             // more objectorientated: parse the object and look for each object if it intersects with each other
-        }
-
-        [Test]
-        public void DateTimeParseTest()
-        {
-            var date = DateTime.Parse("1518-11-01 05:26");
-
-            Assert.AreEqual(1518, date.Year);
-            Assert.AreEqual(11, date.Month);
-            Assert.AreEqual(01, date.Day);
-            Assert.AreEqual(5, date.Hour);
-            Assert.AreEqual(26, date.Minute);
         }
     }
 }

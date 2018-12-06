@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCodeSolvings", "Adv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2018TestExternal", "AoC2018TestExternal\AoC2018TestExternal.csproj", "{5759CBBD-C2E4-4093-8D1D-8A8944B6FFE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoCKonsole", "AoCKonsole\AoCKonsole.csproj", "{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5759CBBD-C2E4-4093-8D1D-8A8944B6FFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5759CBBD-C2E4-4093-8D1D-8A8944B6FFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5759CBBD-C2E4-4093-8D1D-8A8944B6FFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD67A6C-C479-4D71-B63F-2BF1476F7B7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

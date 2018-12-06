@@ -51,7 +51,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Day02Test.cs" />
+    <Compile Include="Day06Test.cs" />
+    <Compile Include="Day05Test.cs" />
+    <Compile Include="Day03Test.cs" />
     <Compile Include="Day04Test.cs" />
+    <Compile Include="Day1_Test.cs" />
+    <Compile Include="FileLoaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
