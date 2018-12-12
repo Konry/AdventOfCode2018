@@ -29,21 +29,6 @@ namespace AdventOfCodeSolvingsTest
         }
 
         [Test]
-        public void CheckAmount()
-        {
-            var str = new string[] { " 0: ...#..#.#..##......###...###........... 1: ...#...#....#.....#..#..#..#........... 2: ...##..##...##....#..#..#..##.......... 3: ..#.#...#..#.#....#..#..#...#.......... 4: ...#.#..#...#.#...#..#..##..##......... 5: ....#...##...#.#..#..#...#...#......... 6: ....##.#.#....#...#..##..##..##........ 7: ...#..###.#...##..#...#...#...#........ 8: ...#....##.#.#.#..##..##..##..##....... 9: ...##..#..#####....#...#...#...#.......10: ..#.#..#...#.##....##..##..##..##......11: ...#...##...#.#...#.#...#...#...#......12: ...##.#.#....#.#...#.#..##..##..##.....13: ..#..###.#....#.#...#....#...#...#.....14: ..#....##.#....#.#..##...##..##..##....15: ..##..#..#.#....#....#..#.#...#...#....16: .#.#..#...#.#...##...#...#.#..##..##...17: ..#...##...#.#.#.#...##...#....#...#...18: ..##.#.#....#####.#.#.#...##...##..##..19: .#..###.#..#.#.#######.#.#.#..#.#...#..20: .#....##....#####...#######....#.#..##."};
-            var strArr = str[0].ToCharArray();
-            var count = 0;
-            for(int i = 0; i < strArr.Length; i++)
-            {
-                if(strArr[i] == '#')
-                {
-                    count++;
-                }
-            }
-            Assert.AreEqual(325, count);
-        }
-        [Test]
         public void RunPartA_FileExample()
         {
 
@@ -60,6 +45,20 @@ namespace AdventOfCodeSolvingsTest
 
 
         [Test]
+        public void RunPartB_FileExample_2000()
+        {
+
+            var sut = new Day12();
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day12.txt");
+            sut.Interations = 2000;
+            var result = sut.RunPartA(list);
+
+            Assert.AreEqual(44511, result);
+            System.Console.WriteLine(result);
+
+        }
+
+        [Test]
         public void RunPartB_FileExample()
         {
 
@@ -70,17 +69,7 @@ namespace AdventOfCodeSolvingsTest
 
             System.Console.WriteLine(result);
 
-        }
-
-        [Test]
-        public void RunPartB_TestChain()
-        {
-
-            var sut = new Day12();
-            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day12_test.txt");
-            var result = sut.RunPartA(list);
-
-            //Assert.AreEqual(66, result);
+            // Gnihihihi 1100000000511
         }
     }
 

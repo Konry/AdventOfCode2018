@@ -28,14 +28,11 @@ namespace AdventOfCodeSolvings
                     initialState = new List<char>(item.Split(' ')[2].ToCharArray());
                 } else
                 {
-                    var charBo = item.Split(' ')[2].ToCharArray()[0];
-                    if (charBo == '#')
-                    {
-                        var newRule = new Rule(item.Split(' ')[2].ToCharArray()[0], item.Split(' ')[0].ToCharArray());
-                        rules.Add(newRule);
-                    }
+                    var newRule = new Rule(item.Split(' ')[2].ToCharArray()[0], item.Split(' ')[0].ToCharArray());
+                    rules.Add(newRule);
                 }
             }
+
 
             char[] state = new char[initialState.Count + 8];
             initialState.CopyTo(state, 4);
@@ -51,21 +48,19 @@ namespace AdventOfCodeSolvings
                     state[i] = '.';
                 }
             }
-            Stack<char> stack = new Stack<char>();
-            foreach(var item in state)
-            {
-                stack.Push(item);
-            }
+            var plantNumber = 0;
             int startIndex = 4;
-            for(long i = 0; i < Interations; i++)
+            int diffCounter = 0;
+            int diff = 0;
+            for(int i = 0; i < Interations; i++)
             {
-                if (i % 1000 == 0)
+                if (i % 10000 == 0)
                 {
                     Debug.WriteLine(i);
                 }
-                Stack<char> workingStack = new Stack<char>();
-                workingStack.Push('.');
-                workingStack.Push('.');
+                List<char> result = new List<char>(state.Length);
+                result.Add('.');
+                result.Add('.');
                 int min = 4, max = state.Length - 4;
 
                 for(int j = 0; j < state.Length - 4; j++)
@@ -85,6 +80,7 @@ namespace AdventOfCodeSolvings
                             min = Math.Min(min, j + 2 );
                             max = Math.Max(max, j + 2);
                             result.Add('#');
+                            plants++;
                         }
                         else
                         {
@@ -108,11 +104,31 @@ namespace AdventOfCodeSolvings
                 }
                 startIndex += addMin;
                 result.CopyTo(state, 0 + addMin);
-                Debug.WriteLine(result.Count);
-                //Debug.WriteLine(i + 1 + ": " + new string(result.Skip(1).ToArray()));
+
+                var oldPlantNumber = plantNumber;
+                plantNumber = 0;
+                for (int index = 0; index < state.Length; index++)
+                {
+                    if (state[index] == '#')
+                        plantNumber += index - startIndex;
+                }
+                var oldDiff = diff;
+                diff = (plantNumber - oldPlantNumber);
+                if (oldDiff - diff == 0)
+                {
+                    diffCounter++;
+                }
+                else
+                {
+                    diffCounter = 0;
+                }
+                if (diffCounter > 100)
+                {
+                    return plantNumber + (Interations - i - 1) * diff;
+                }
+
             }
 
-            var plantNumber = 0;
             for(int i = 0; i < state.Length; i++)
             {
                 if(state[i] == '#')
