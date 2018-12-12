@@ -11,9 +11,10 @@ namespace AoCKonsole
     {
         static void Main(string[] args)
         {
-            var sut = new Day05();
-            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day05.txt");
-            var result = sut.RunPartB(list);
+            var sut = new Day12();
+            var list = FileLoader.LoadLinesFromFile("../../../../../Data/data_day12.txt");
+            sut.Interations = 50000;
+            var result = sut.RunPartA(list);
         }
     }
 }
