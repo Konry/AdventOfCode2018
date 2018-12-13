@@ -62,6 +62,7 @@
     <Compile Include="Day05Test.cs" />
     <Compile Include="Day03Test.cs" />
     <Compile Include="Day04Test.cs" />
+    <Compile Include="Day13Test.cs" />
     <Compile Include="Day1_Test.cs" />
     <Compile Include="FileLoaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
